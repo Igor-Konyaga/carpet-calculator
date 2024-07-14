@@ -35,8 +35,8 @@ export function Calculator() {
         let standardPrice = 90;
         const DELIVERY_PRICE = 150;
         const LONG_PRICE = 10;
+		  const MIN_PRICE_M = 90;
         const ADDITIONAL_PRICE = 30;
-        const MIN_PRICE = 500;
         const resultSize = width * height;
 
         if (sm) {
@@ -53,11 +53,11 @@ export function Calculator() {
 
         if (del) {
             const resSum = standardPrice * resultSize + DELIVERY_PRICE;
-            return resSum < MIN_PRICE ? MIN_PRICE : resSum;
+            return resSum;
         }
 
-        if (standardPrice * resultSize < MIN_PRICE) {
-            return MIN_PRICE;
+        if (standardPrice * resultSize < MIN_PRICE_M) {
+            return MIN_PRICE_M;
         }
 
         return standardPrice * resultSize;
@@ -94,7 +94,7 @@ export function Calculator() {
                 <div className={styles.wrapperCheckbox}>
                     <label className={styles.labelCheckbox}>
                         <input className={styles.checkbox} type='checkbox' onChange={handleDeliveryChange}/>
-                        Доставка
+                        Доставка по місту
                     </label>
                     <label className={styles.labelCheckbox}>
                         <input className={styles.checkbox} type='checkbox' onChange={handleLongChange}/>
@@ -113,7 +113,9 @@ export function Calculator() {
                         type='submit'>Розрахувати
                 </button>
                 <p className={styles.sumPrice}>Приблизна вартість: <span
-                    className={styles.priceValue}>{resultPrice} грн</span></p>
+                    className={styles.priceValue}>{resultPrice} грн</span>
+						  </p>
+						  <p className={styles.minPrice}>(Мінімальне замовлення: 500 грн)</p>
             </form>
         </div>
 
