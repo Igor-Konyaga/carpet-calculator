@@ -79,7 +79,7 @@
 .wrapperCheckbox {
 	display: flex;
 	flex-direction: column;
-	/* row-gap: 16px; */
+	row-gap: 2px;
 	margin-bottom: 28px;
 
 	@media (max-width: 480px) {
